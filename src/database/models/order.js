@@ -8,8 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     customer_id: DataTypes.INTEGER,
     stock_id: DataTypes.INTEGER
   }, {});
-  Order.associate = function(models) {
-    // associations can be defined here
+
+  Order.associate = (models) => {
+    Order.belongsTo(models.Customer);
+    Order.belongsTo(models.Stock);
   };
+
   return Order;
 };

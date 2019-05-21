@@ -2,10 +2,13 @@
 module.exports = (sequelize, DataTypes) => {
   const Color = sequelize.define('Color', {
     stock_id: DataTypes.INTEGER,
-    color: DataTypes.STRING
+    color: DataTypes.STRING,
+    quantity: DataTypes.INTEGER
   }, {});
-  Color.associate = function(models) {
-    // associations can be defined here
+
+  Color.associate = (models) => {
+    Color.belongsTo(models.Stock);
   };
+
   return Color;
 };

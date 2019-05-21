@@ -2,6 +2,9 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+const { PORT, DATABASE_URL } = process.env;
+
 module.exports = Object.freeze({
-  PORT: process.env.PORT
-})
+  PORT,
+  DATABASE_URL
+});

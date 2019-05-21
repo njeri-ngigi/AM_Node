@@ -6,8 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     phone_number: DataTypes.STRING,
     profile_picture: DataTypes.STRING
   }, {});
-  Customer.associate = function(models) {
-    // associations can be defined here
+
+  Customer.associate = (models) => {
+    Customer.hasMany(models.Order, {
+      foreignKey: 'order_id',
+      as: 'orders'
+    });
   };
+
   return Customer;
 };

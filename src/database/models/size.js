@@ -2,10 +2,13 @@
 module.exports = (sequelize, DataTypes) => {
   const Size = sequelize.define('Size', {
     stock_id: DataTypes.INTEGER,
-    size: DataTypes.STRING
+    size: DataTypes.STRING,
+    quantity: DataTypes.INTEGER
   }, {});
-  Size.associate = function(models) {
-    // associations can be defined here
+
+  Size.associate = (models) => {
+    Color.belongsTo(models.Stock);
   };
+
   return Size;
 };
