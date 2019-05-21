@@ -1,0 +1,22 @@
+{
+  "name": "AM_Node",
+  "version": "1.0.0",
+  "description": "Accounting Made Easy in NodeJs",
+  "main": "index.js",
+  "repository": "https://github.com/njeri-ngigi/AM_Node.git",
+  "author": "Njeri Ngigi <njery.ngigi@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start:dev": "DEBUG=log nodemon src/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0"
+  }
+}
