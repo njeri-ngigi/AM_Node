@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   Size.associate = (models) => {
-    Color.belongsTo(models.Stock);
+    Size.belongsTo(models.Stock);
   };
 
   return Size;

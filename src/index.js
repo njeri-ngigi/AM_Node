@@ -1,11 +1,12 @@
 const express = require('express');
-const ENV = require('./config');
+const ENV = require('./environment');
 const apiRouter = require('./routes');
 
-const app = express()
+const app = express();
 
 const port = ENV.PORT;
 
-app.use('/api/v1/am', apiRouter)
+app.use(express.json());
+app.use('/api/v1/am', apiRouter);
 
-app.listen(port, () => console.log(`Server is running on port ${port} ...`))
+app.listen(port, () => console.log(`Server is running on port ${port} ...`));

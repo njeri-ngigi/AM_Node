@@ -1,9 +1,11 @@
 const express = require('express');
 const controller = require('./controller');
+const { validateUser } = require('./middlewares/validator');
+
 
 const apiRouter = express();
 
-apiRouter.post('/customers', controller.addCustomer);
+apiRouter.post('/customers', validateUser(), controller.addCustomer);
 apiRouter.get('/customers', controller.getCustomer);
 
 apiRouter.post('/orders', controller.addCustomer);
