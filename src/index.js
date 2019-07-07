@@ -4,9 +4,9 @@ const apiRouter = require('./routes');
 const cors = require('cors');
 
 const app = express();
-const port = ENV.PORT;
-const corsOptions = {
-  origin: 'http://localhost:4200'
+const { PORT: port, ORIGIN_URL: origin } = ENV;
+const corsOptions = { 
+  origin
 };
 
 

@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator');
-const { createCustomer } = require('./services/customerService');
+const { createCustomer, getAllCustomers, getCustomerById } = require('../services/customerService');
 
 module.exports = {
   addCustomer: async (req, res) => {
@@ -24,8 +24,17 @@ module.exports = {
     }    
   },
 
-  getCustomer: (req, res) => {
-    res.send({
-      message: "Here are all yee customers, Mr. Smith!" })
-    }
+  getCustomers: async (req, res) => {
+    const allcustomers = await getAllCustomers();
+    const serializedData = allcustomers.map(({ dataValues }) => dataValues);
+    res.send(serializedData);
+  },
+
+  getCustomer: async (req, res) => {
+    const customer = await getCustomerById(req.params.id);
+    if (customer) return res.send(customer)
+    return res.status(404).send({
+      message: "customer not found"
+    })
+  }
 }
