@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       stock_type: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       quantity: {
         type: Sequelize.INTEGER

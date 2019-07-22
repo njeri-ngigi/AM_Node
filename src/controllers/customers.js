@@ -13,14 +13,17 @@ module.exports = {
     try {
       await createCustomer({ name, email, phone_number, profile_picture });
       res.status(201).send({ message: `A new user '${name}', added!` })
-    } catch(error) {
-      let message = "Something went wrong. Try again or reach out for IT support";
-      if (error.name === 'SequelizeUniqueConstraintError') {
-        const { path } = error.errors[0];
-        message = `It seems a user with this ${path} already exists, try updating the customer details or use a different ${path}.`
+    } catch(err) {
+      let error = "Something went wrong. Try again or reach out for IT support";
+      const { path } = err.errors[0];
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        error = `It seems a user with this ${path} already exists, try updating the customer details or use a different ${path}.`
+        res.status(409).send({ 
+          error,
+          field: path
+        });
       }
-      console.log(error);
-      res.status(500).send({ message });
+      else { res.status(500).send({ error }); }      
     }    
   },
 
