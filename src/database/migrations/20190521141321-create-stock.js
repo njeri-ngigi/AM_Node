@@ -26,6 +26,12 @@ module.exports = {
       stock_image_url: {
         type: Sequelize.STRING
       },
+      fabric: {
+        type: Sequelize.STRING
+      },
+      designer: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

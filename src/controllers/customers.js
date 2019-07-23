@@ -14,7 +14,7 @@ module.exports = {
       await createCustomer({ name, email, phone_number, profile_picture });
       res.status(201).send({ message: `A new user '${name}', added!` })
     } catch(err) {
-      let error = "Something went wrong. Try again or reach out for IT support";
+      let error = 'Something went wrong. Try again or reach out for IT support';
       const { path } = err.errors[0];
       if (err.name === 'SequelizeUniqueConstraintError') {
         error = `It seems a user with this ${path} already exists, try updating the customer details or use a different ${path}.`
@@ -37,7 +37,7 @@ module.exports = {
     const customer = await getCustomerById(req.params.id);
     if (customer) return res.send(customer)
     return res.status(404).send({
-      message: "customer not found"
+      message: 'customer not found'
     })
   }
 }

@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     quality: DataTypes.STRING,
     designer: DataTypes.STRING,
     description: DataTypes.TEXT,
-    stock_image_url: DataTypes.STRING
+    stock_image_url: DataTypes.STRING,
+    fabric: DataTypes.STRING
   }, {});
 
   Stock.associate = (models) => {
@@ -16,21 +17,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'orders'
     });
 
-    Stock.hasMany(models.Color, {
-      foreign_key: 'color_id',
-      as: 'colors'
-    });
-
     Stock.hasMany(models.Size, {
       foreign_key: 'size_id',
       as: 'sizes'
     });
-
-    Stock.hasMany(models.Fabric, {
-      foreign_key: 'fabric_id',
-      as: 'fabrics'
-    });
   };
-
   return Stock;
 };

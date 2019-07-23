@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
 
   Size.associate = (models) => {
     Size.belongsTo(models.Stock);
+    Size.hasMany(models.Color, {
+      foreign_key: 'color_id',
+      as: 'colors'
+    });
   };
 
   return Size;
