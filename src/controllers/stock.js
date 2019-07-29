@@ -1,19 +1,23 @@
+const { validationResult } = require('express-validator');
 const { createStock } = require('../services/stockService');
+
+
 module.exports = {
   addStock: async (req, res) => {
+    const errors = validationResult(req);
+    if(!errors.isEmpty()) return res.status(400).send({ errors: errors.array() });
+
     const {
       stockType: stock_type, stockImageUrl: stock_image_url,
-      quantity, price, quality, description, sizes, fabric, designer
+      price, quality, description, sizes, fabric, designer
     } = req.body;
 
     await createStock(
-      { stock_type, quantity, price, quality, description, stock_image_url, fabric, designer },
+      { stock_type, price, quality, description, stock_image_url, fabric, designer },
       sizes
     );
 
-    res.send({
-      message: 'add stock'
-    })
+    res.status(201).send({ message: `${stock_type} stock added successfully` })
   },
 
   addStockInBulk: (req, res) => {

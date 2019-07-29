@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   Color.associate = (models) => {
-    Color.belongsTo(models.Size);
+    Color.belongsTo(models.Size, {
+      foreignKey: 'size_id'
+    });
   };
 
   return Color;

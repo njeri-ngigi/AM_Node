@@ -2,7 +2,6 @@
 module.exports = (sequelize, DataTypes) => {
   const Stock = sequelize.define('Stock', {
     stock_type: DataTypes.STRING,
-    quantity: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
     quality: DataTypes.STRING,
     designer: DataTypes.STRING,
@@ -13,12 +12,12 @@ module.exports = (sequelize, DataTypes) => {
 
   Stock.associate = (models) => {
     Stock.hasMany(models.Order, {
-      foreign_key: 'order_id',
+      foreignKey: 'stock_id',
       as: 'orders'
     });
 
     Stock.hasMany(models.Size, {
-      foreign_key: 'size_id',
+      foreignKey: 'stock_id',
       as: 'sizes'
     });
   };

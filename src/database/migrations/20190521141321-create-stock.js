@@ -11,9 +11,6 @@ module.exports = {
       stock_type: {
         type: Sequelize.STRING
       },
-      quantity: {
-        type: Sequelize.INTEGER
-      },
       price: {
         type: Sequelize.FLOAT
       },
