@@ -13,8 +13,8 @@ apiRouter.get('/customers/:id', userController.getCustomer);
 apiRouter.post('/stock', validateStock(), stockController.addStock);
 apiRouter.get('/stock', stockController.getAllStock);
 apiRouter.post('/stock/bulk', stockController.addStockInBulk);
-apiRouter.get('/stock/:id', stockController.getStockById);
-
+apiRouter.get('/stock/type', stockController.getStockType);
+apiRouter.get('/stock/one/:id', stockController.getStockById);
 
 apiRouter.post('/order', userController.addCustomer);
 apiRouter.get('/order', userController.getCustomers);

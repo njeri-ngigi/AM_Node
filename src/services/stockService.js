@@ -52,6 +52,28 @@ const createStock = async (stock, sizes) => {
   await createSizes(sizes, stock_id);
 }
 
+const include = [
+  { 
+    model: Size,
+    as: 'sizes',
+    include: [
+      {
+        model: Color,
+        as: 'colors'
+      }
+    ]
+  }
+]
+
+const getStockById = (id) => Stock.findByPk(id, { include });
+
+const getAllStock = () => Stock.findAll({ include });
+
+const getStockType = () => Stock.findAll({ attributes: ['stock_type'] })
+
 module.exports = {
-  createStock
+  createStock,
+  getStockById,
+  getAllStock,
+  getStockType
 }

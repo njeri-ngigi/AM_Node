@@ -1,5 +1,5 @@
 const { validationResult } = require('express-validator');
-const { createStock } = require('../services/stockService');
+const { createStock, getStockById, getAllStock, getStockType } = require('../services/stockService');
 
 
 module.exports = {
@@ -26,15 +26,22 @@ module.exports = {
     })
   },
 
-  getAllStock: (req, res) => {
-    res.send({
-      message: 'get all stock'
+  getAllStock: async (req, res) => {
+    const stock = await getAllStock();
+    res.send(stock);
+  },
+
+  getStockById: async (req, res) => {
+    const stock = await getStockById(req.params.id);
+    if (stock) return res.send(stock)
+    return res.status(404).send({
+      message: 'stock not found'
     })
   },
 
-  getStockById: (req, res) => {
-    res.send({
-      message: 'get stock by ID'
-    })
+  getStockType: async (req, res) => {
+    const stockTypes = await getStockType();
+    const types = stockTypes.map(type => type.stock_type);
+    return res.send([...new Set(types)])
   }
 }
