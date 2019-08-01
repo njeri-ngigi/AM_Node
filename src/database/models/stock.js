@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Stock = sequelize.define('Stock', {
     stock_type: DataTypes.STRING,
     price: DataTypes.FLOAT,
+    quantity: DataTypes.INTEGER,
     quality: DataTypes.STRING,
     designer: DataTypes.STRING,
     description: DataTypes.TEXT,

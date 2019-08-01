@@ -9,11 +9,11 @@ module.exports = {
 
     const {
       stockType: stock_type, stockImageUrl: stock_image_url,
-      price, quality, description, sizes, fabric, designer
+      price, quality, quantity, description, sizes, fabric, designer
     } = req.body;
 
     await createStock(
-      { stock_type, price, quality, description, stock_image_url, fabric, designer },
+      { stock_type, price, quality, quantity, description, stock_image_url, fabric, designer },
       sizes
     );
 

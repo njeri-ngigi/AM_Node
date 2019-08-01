@@ -41,6 +41,7 @@ module.exports = {
       check('stockImageUrl').trim().not().isEmpty(),
       check('price', 'price should be greater than 0').isNumeric().custom((value) => value >= 0),
       check('quality').trim().not().isEmpty(),
+      check('quantity', 'price should be greater than 0').isNumeric().custom((value) => value >= 0),
       check('designer').trim().not().isEmpty(),
       check('fabric').trim().not().isEmpty(),
       check('description').trim().not().isEmpty(),
